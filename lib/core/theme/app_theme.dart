@@ -5,6 +5,7 @@ import 'app_colors.dart';
 class AppTheme {
   AppTheme._();
 
+
   static ThemeData get light => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
@@ -18,7 +19,7 @@ class AppTheme {
       onError: AppColors.white,
       onSurface: AppColors.grey900,
     ),
-    scaffoldBackgroundColor: AppColors.bgPrimary,
+    scaffoldBackgroundColor: AppColors.white,
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.white,
       foregroundColor: AppColors.grey900,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trendify/intro_pages/splash_page.dart';
-import 'package:trendify/theme/app_theme.dart';
+
+import 'core/theme/app_theme.dart';
+import 'features/onboarding/pages/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
