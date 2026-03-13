@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trendify/core/constants.dart';
 import 'package:trendify/features/auth/pages/sign_in_page.dart';
 import 'package:trendify/features/auth/pages/sign_up_page.dart';
-
 import '../../../core/theme/app_colors.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -26,180 +26,35 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Column(
               children: [
                 SvgPicture.asset(
-                  "assets/images/logo.svg",
+                  Constants.logoPath,
                   color: AppColors.primary,
                   height: 80,
                   width: 80,
                 ),
                 SizedBox(height: 38),
                 Text(
-                  "Let's Get Started!",
+                  Constants.welcomeTitle,
                   style: GoogleFonts.urbanist(
                     fontSize: 32,
-                    color: AppColors.black,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 4),
                 Text(
-                  "Let's dive in into your account!",
+                  Constants.welcomeSubtitle,
                   style: GoogleFonts.urbanist(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 SizedBox(height: 52),
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    side: BorderSide(color: AppColors.bgPrimary, width: 1),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 18,
-                      vertical: 15,
-                    ),
-                    minimumSize: const Size(double.infinity, 52),
-                  ),
-                  onPressed: () {},
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      // Centered text
-                      Text(
-                        'Continue with Google',
-                        style: GoogleFonts.urbanist(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: AppColors.grey900,
-                        ),
-                      ),
-                      // Icon pinned to the left
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Image.asset(
-                          "assets/images/google.png",
-                          height: 24,
-                          width: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                _socialButton(Constants.continueWithGoogle, Constants.googleIconPath),
                 SizedBox(height: 12),
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    side: BorderSide(color: AppColors.bgPrimary, width: 1),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 18,
-                      vertical: 15,
-                    ),
-                    minimumSize: const Size(double.infinity, 52),
-                  ),
-                  onPressed: () {},
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      // Centered text
-                      Text(
-                        'Continue with Apple',
-                        style: GoogleFonts.urbanist(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: AppColors.grey900,
-                        ),
-                      ),
-                      // Icon pinned to the left
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Image.asset(
-                          "assets/images/apple.png",
-                          height: 24,
-                          width: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                _socialButton(Constants.continueWithApple, Constants.appleIconPath),
                 SizedBox(height: 12),
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    side: BorderSide(color: AppColors.bgPrimary, width: 1),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 18,
-                      vertical: 15,
-                    ),
-                    minimumSize: const Size(double.infinity, 52),
-                  ),
-                  onPressed: () {},
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      // Centered text
-                      Text(
-                        'Continue with Facebook',
-                        style: GoogleFonts.urbanist(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: AppColors.grey900,
-                        ),
-                      ),
-                      // Icon pinned to the left
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Image.asset(
-                          "assets/images/facebook.png",
-                          height: 24,
-                          width: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                _socialButton(Constants.continueWithFacebook, Constants.facebookIconPath),
                 SizedBox(height: 12),
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    side: BorderSide(color: AppColors.bgPrimary, width: 1),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 18,
-                      vertical: 15,
-                    ),
-                    minimumSize: const Size(double.infinity, 52),
-                  ),
-                  onPressed: () {},
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      // Centered text
-                      Text(
-                        'Continue with Twitter',
-                        style: GoogleFonts.urbanist(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: AppColors.grey900,
-                        ),
-                      ),
-                      // Icon pinned to the left
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Image.asset(
-                          "assets/images/twitter.png",
-                          height: 24,
-                          width: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                _socialButton(Constants.continueWithTwitter, Constants.twitterIconPath),
                 SizedBox(height: 52),
                 ElevatedButton(
                   onPressed: () {
@@ -217,7 +72,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                   ),
                   child: const Text(
-                    "Sign up",
+                    Constants.signUp,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -238,7 +93,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                   ),
                   child: const Text(
-                    "Sign in",
+                    Constants.signIn,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -253,7 +108,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Privacy Policy",
+                  Constants.privacyPolicy,
                   style: GoogleFonts.urbanist(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
@@ -269,7 +124,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
                 SizedBox(width: 6),
                 Text(
-                  "Terms of Service",
+                  Constants.termsOfService,
                   style: GoogleFonts.urbanist(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
@@ -277,6 +132,36 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _socialButton(String label, String iconPath) {
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        side: BorderSide(color: AppColors.bgPrimary, width: 1),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
+        minimumSize: const Size(double.infinity, 52),
+      ),
+      onPressed: () {},
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Text(
+            label,
+            style: GoogleFonts.urbanist(
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Image.asset(iconPath, height: 24, width: 24),
           ),
         ],
       ),

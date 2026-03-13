@@ -5,8 +5,10 @@ import 'app_colors.dart';
 class AppTheme {
   AppTheme._();
 
-
   static ThemeData get light => ThemeData(
+    extensions: [
+
+    ],
     useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: const ColorScheme.light(
@@ -49,12 +51,6 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         minimumSize: const Size(double.infinity, 52),
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-      ),
-    ),
-    textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(
-        foregroundColor: AppColors.primary,
-        textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -337,3 +333,5 @@ class AppTheme {
     ),
   );
 }
+
+

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trendify/core/constants.dart';
 import 'package:trendify/features/onboarding/pages/intro_page.dart';
-
 import '../../../core/theme/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -31,13 +31,13 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SvgPicture.asset(
-                  "assets/images/logo.svg",
+                  Constants.logoPath,
                   height: 135,
                   width: 135,
                 ),
                 SizedBox(height: 24),
                 Text(
-                  "Trendify",
+                  Constants.appName,
                   style: GoogleFonts.urbanist(
                     fontSize: 36,
                     color: AppColors.white,
@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void initSplash() async {
     Future.delayed(Duration(seconds: 2)).then(
-      (value) => {
+          (value) => {
         if (mounted)
           {
             Navigator.pushReplacement(
@@ -75,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 builder: (context) => IntroScreen(),
                 traversalEdgeBehavior: TraversalEdgeBehavior.parentScope,
                 directionalTraversalEdgeBehavior:
-                    TraversalEdgeBehavior.closedLoop,
+                TraversalEdgeBehavior.closedLoop,
               ),
             ),
           },
