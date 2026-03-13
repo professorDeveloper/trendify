@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:trendify/features/auth/pages/forgot_password/new_password_page.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -116,7 +117,14 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
                       }
                       return null;
                     },
-                    onSaved: (value) => print('Saved: $value'),
+                    onCompleted: (value) => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewPasswordScreen(),
+                        ),
+                      ),
+                    },
                   ),
                   const SizedBox(height: 16),
                   canResend

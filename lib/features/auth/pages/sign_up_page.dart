@@ -4,6 +4,7 @@ import 'package:trendify/core/constants.dart';
 import 'package:trendify/features/auth/pages/sign_in_page.dart';
 import 'package:trendify/features/auth/widgets/auth_widgets.dart';
 import 'package:trendify/features/auth/widgets/loading_dialog.dart';
+import 'package:trendify/features/shell/bottom_navbar.dart';
 
 import '../../../core/theme/app_colors.dart';
 
@@ -18,6 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final _loadingDialog = LoadingDialog();
 
   bool _obscurePassword = true;
   bool _agreeToTerms = false;
@@ -89,8 +91,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your email';
                   }
-                  if (!RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$')
-                      .hasMatch(value)) {
+                  if (!RegExp(
+                    r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$',
+                  ).hasMatch(value)) {
                     return 'Please enter a valid email';
                   }
                   return null;
@@ -130,8 +133,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () =>
-                        setState(() => _agreeToTerms = !_agreeToTerms),
+                    onTap: () => setState(() => _agreeToTerms = !_agreeToTerms),
                     child: Container(
                       width: 22,
                       height: 22,
@@ -148,8 +150,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             : Colors.transparent,
                       ),
                       child: _agreeToTerms
-                          ? const Icon(Icons.check,
-                          size: 16, color: AppColors.primary)
+                          ? const Icon(
+                              Icons.check,
+                              size: 16,
+                              color: AppColors.primary,
+                            )
                           : null,
                     ),
                   ),
@@ -220,7 +225,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Row(
                 children: [
                   const Expanded(
-                      child: Divider(color: AppColors.grey300, thickness: 1)),
+                    child: Divider(color: AppColors.grey300, thickness: 1),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
@@ -233,7 +239,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const Expanded(
-                      child: Divider(color: AppColors.grey300, thickness: 1)),
+                    child: Divider(color: AppColors.grey300, thickness: 1),
+                  ),
                 ],
               ),
               const SizedBox(height: 20),
@@ -252,11 +259,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
               AuthButton(
                 label: Constants.signUp,
                 onPressed: _agreeToTerms
-                    ? () {
-                  if (_formKey.currentState!.validate()) {
-                    showLoadingDialog(Constants.signUp, context);
-                  }
-                }
+                    ? () async {
+                        if (_formKey.currentState!.validate()) {
+                          _loadingDialog.show(Constants.signUp, context);
+                          Future.delayed(Duration(seconds: 3)).then((value) {
+                            _loadingDialog.dismiss();
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainBottomNavbar(),
+                              ),
+                              (Route<dynamic> route) => false,
+                            );
+                          });
+                        }
+                      }
                     : null,
               ),
               const SizedBox(height: 24),

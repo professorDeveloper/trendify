@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trendify/core/constants.dart';
 import 'package:trendify/features/auth/pages/forgot_password/forgot_password_page.dart';
 import 'package:trendify/features/auth/widgets/auth_widgets.dart';
+import 'package:trendify/features/shell/bottom_navbar.dart';
 
 import '../../../core/theme/app_colors.dart';
 
@@ -88,8 +89,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your email';
                   }
-                  if (!RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$')
-                      .hasMatch(value)) {
+                  if (!RegExp(
+                    r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$',
+                  ).hasMatch(value)) {
                     return 'Please enter a valid email';
                   }
                   return null;
@@ -132,8 +134,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   Row(
                     children: [
                       GestureDetector(
-                        onTap: () =>
-                            setState(() => _rememberMe = !_rememberMe),
+                        onTap: () => setState(() => _rememberMe = !_rememberMe),
                         child: Container(
                           width: 22,
                           height: 22,
@@ -150,8 +151,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                 : Colors.transparent,
                           ),
                           child: _rememberMe
-                              ? const Icon(Icons.check,
-                              size: 16, color: AppColors.primary)
+                              ? const Icon(
+                                  Icons.check,
+                                  size: 16,
+                                  color: AppColors.primary,
+                                )
                               : null,
                         ),
                       ),
@@ -188,7 +192,8 @@ class _SignInScreenState extends State<SignInScreen> {
               Row(
                 children: [
                   const Expanded(
-                      child: Divider(color: AppColors.grey300, thickness: 1)),
+                    child: Divider(color: AppColors.grey300, thickness: 1),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
@@ -201,7 +206,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   const Expanded(
-                      child: Divider(color: AppColors.grey300, thickness: 1)),
+                    child: Divider(color: AppColors.grey300, thickness: 1),
+                  ),
                 ],
               ),
               const SizedBox(height: 20),
@@ -226,7 +232,13 @@ class _SignInScreenState extends State<SignInScreen> {
               AuthButton(
                 label: Constants.signIn,
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {}
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => MainBottomNavbar()),
+                      (Route<dynamic> route) => false,
+                    );
+                  }
                 },
               ),
               const SizedBox(height: 24),

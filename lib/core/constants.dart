@@ -2,7 +2,6 @@ class Constants {
   Constants._();
 
   static const String appName = "Trendify";
-
   static const String welcomeTitle = "Let's Get Started!";
   static const String welcomeTitleSignIn = "Welcome Back!";
   static const String welcomeSubtitle = "Let's dive in into your account!";
@@ -40,6 +39,10 @@ class Constants {
   static const String newPasswordTitle = "Secure Your Account";
   static const String newPasswordSubTitle =
       "Almost there! Create a new password for your Trendify account to keep it secure. Remember to choose a strong and unique password.";
+
+  static const String successPasswordReset =
+      "Your password has been successfully changed.";
+  static const String youAreSet = "You're All Set!";
 
   static const String splashTagline = appName;
   static const String skip = "Skip";
