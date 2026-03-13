@@ -34,6 +34,12 @@ class Constants {
       "We've got you covered. Enter your registered email to reset your password. We will send an OTP code to your email for the next steps.";
   static const String registeredEmailLabel = "Your Registered Email";
   static const String sendOtpCode = "Send OTP Code";
+  static const String otpTitle = "Enter OTP Code?";
+  static const String otpSubtitle =
+      "Please check your email inbox for a message from Trendify. Enter the one-time verification code below.";
+  static const String newPasswordTitle = "Secure Your Account";
+  static const String newPasswordSubTitle =
+      "Almost there! Create a new password for your Trendify account to keep it secure. Remember to choose a strong and unique password.";
 
   static const String splashTagline = appName;
   static const String skip = "Skip";

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trendify/core/constants.dart';
+import 'package:trendify/features/auth/pages/forgot_password/enter_otp_page.dart';
+import 'package:trendify/features/auth/widgets/auth_widgets.dart';
 
 import '../../../../core/theme/app_colors.dart';
 
@@ -73,51 +75,34 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              TextFormField(
+              AuthTextField(
                 controller: _emailController,
+                hintText: 'andrew.ainsley@yourdomain.com',
                 keyboardType: TextInputType.emailAddress,
-                style: GoogleFonts.urbanist(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.grey900,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'andrew.ainsley@yourdomain.com',
-                  hintStyle: GoogleFonts.urbanist(
-                    fontSize: 14,
-                    color: AppColors.grey500,
-                  ),
-                  prefixIcon: const Icon(
-                    Icons.email_outlined,
-                    color: AppColors.grey500,
-                    size: 20,
-                  ),
-                ),
+                prefixIcon: Icons.email_outlined,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your email';
                   }
-                  if (!RegExp(
-                    r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$',
-                  ).hasMatch(value)) {
+                  if (!RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$')
+                      .hasMatch(value)) {
                     return 'Please enter a valid email';
                   }
                   return null;
                 },
               ),
               const Spacer(),
-              ElevatedButton(
+              AuthButton(
+                label: Constants.sendOtpCode,
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {}
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EnterOtpScreen()),
+                    );
+                  }
                 },
-                child: Text(
-                  Constants.sendOtpCode,
-                  style: GoogleFonts.urbanist(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.white,
-                  ),
-                ),
               ),
               const SizedBox(height: 32),
             ],

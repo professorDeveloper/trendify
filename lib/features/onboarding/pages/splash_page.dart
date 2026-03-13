@@ -64,6 +64,8 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
+
+
   void initSplash() async {
     Future.delayed(Duration(seconds: 2)).then(
           (value) => {

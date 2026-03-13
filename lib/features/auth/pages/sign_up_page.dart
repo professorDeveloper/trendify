@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trendify/core/constants.dart';
 import 'package:trendify/features/auth/pages/sign_in_page.dart';
+import 'package:trendify/features/auth/widgets/auth_widgets.dart';
 import 'package:trendify/features/auth/widgets/loading_dialog.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -79,33 +80,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-              TextFormField(
+              AuthTextField(
                 controller: _emailController,
+                hintText: Constants.emailLabel,
                 keyboardType: TextInputType.emailAddress,
-                style: GoogleFonts.urbanist(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.grey900,
-                ),
-                decoration: InputDecoration(
-                  hintText: Constants.emailLabel,
-                  hintStyle: GoogleFonts.urbanist(
-                    fontSize: 14,
-                    color: AppColors.grey500,
-                  ),
-                  prefixIcon: const Icon(
-                    Icons.email_outlined,
-                    color: AppColors.grey500,
-                    size: 20,
-                  ),
-                ),
+                prefixIcon: Icons.email_outlined,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your email';
                   }
-                  if (!RegExp(
-                    r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$',
-                  ).hasMatch(value)) {
+                  if (!RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$')
+                      .hasMatch(value)) {
                     return 'Please enter a valid email';
                   }
                   return null;
@@ -121,40 +106,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-              TextFormField(
+              AuthTextField(
                 controller: _passwordController,
+                hintText: Constants.passwordLabel,
                 obscureText: _obscurePassword,
-                style: GoogleFonts.urbanist(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.grey900,
-                ),
-                decoration: InputDecoration(
-                  hintText: Constants.passwordLabel,
-                  hintStyle: GoogleFonts.urbanist(
-                    fontSize: 14,
-                    color: AppColors.grey500,
-                  ),
-                  prefixIcon: const Icon(
-                    Icons.lock_outline,
-                    color: AppColors.grey500,
-                    size: 20,
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _obscurePassword
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                      color: AppColors.grey500,
-                      size: 20,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _obscurePassword = !_obscurePassword;
-                      });
-                    },
-                  ),
-                ),
+                prefixIcon: Icons.lock_outline,
+                suffixIcon: _obscurePassword
+                    ? Icons.visibility_off_outlined
+                    : Icons.visibility_outlined,
+                onSuffixTap: () =>
+                    setState(() => _obscurePassword = !_obscurePassword),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your password';
@@ -169,11 +130,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _agreeToTerms = !_agreeToTerms;
-                      });
-                    },
+                    onTap: () =>
+                        setState(() => _agreeToTerms = !_agreeToTerms),
                     child: Container(
                       width: 22,
                       height: 22,
@@ -190,11 +148,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             : Colors.transparent,
                       ),
                       child: _agreeToTerms
-                          ? const Icon(
-                              Icons.check,
-                              size: 16,
-                              color: AppColors.primary,
-                            )
+                          ? const Icon(Icons.check,
+                          size: 16, color: AppColors.primary)
                           : null,
                     ),
                   ),
@@ -241,14 +196,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const TextSpan(text: 'Already have an account?  '),
                       WidgetSpan(
                         child: GestureDetector(
-                          onTap: () => {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignInScreen(),
-                              ),
+                          onTap: () => Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignInScreen(),
                             ),
-                          },
+                          ),
                           child: Text(
                             Constants.signIn,
                             style: GoogleFonts.urbanist(
@@ -267,8 +220,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Row(
                 children: [
                   const Expanded(
-                    child: Divider(color: AppColors.grey300, thickness: 1),
-                  ),
+                      child: Divider(color: AppColors.grey300, thickness: 1)),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
@@ -281,86 +233,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const Expanded(
-                    child: Divider(color: AppColors.grey300, thickness: 1),
-                  ),
+                      child: Divider(color: AppColors.grey300, thickness: 1)),
                 ],
               ),
               const SizedBox(height: 20),
-              _SocialButton(
+              SocialButton(
                 iconPath: Constants.googleIconPath,
                 label: Constants.continueWithGoogle,
                 onTap: () {},
               ),
               const SizedBox(height: 12),
-              _SocialButton(
+              SocialButton(
                 iconPath: Constants.appleIconPath,
                 label: Constants.continueWithApple,
                 onTap: () {},
               ),
               const SizedBox(height: 32),
-              ElevatedButton(
+              AuthButton(
+                label: Constants.signUp,
                 onPressed: _agreeToTerms
                     ? () {
-                        if (_formKey.currentState!.validate()) {
-                          showLoadingDialog(Constants.signUp, context);
-                        }
-                      }
+                  if (_formKey.currentState!.validate()) {
+                    showLoadingDialog(Constants.signUp, context);
+                  }
+                }
                     : null,
-                child: Text(
-                  Constants.signUp,
-                  style: GoogleFonts.urbanist(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.white,
-                  ),
-                ),
               ),
               const SizedBox(height: 24),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _SocialButton extends StatelessWidget {
-  final String iconPath;
-  final String label;
-  final VoidCallback onTap;
-
-  const _SocialButton({
-    required this.iconPath,
-    required this.label,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        height: 56,
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppColors.grey300, width: 1),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(iconPath, width: 24, height: 24),
-            const SizedBox(width: 12),
-            Text(
-              label,
-              style: GoogleFonts.urbanist(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: AppColors.grey900,
-              ),
-            ),
-          ],
         ),
       ),
     );
