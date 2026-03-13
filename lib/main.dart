@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trendify/features/shell/bottom_navbar.dart';
 
 import 'core/theme/app_theme.dart';
-import 'features/onboarding/pages/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark,
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
-      home: SplashScreen(),
+      home: MainBottomNavbar(),
     );
   }
 }
