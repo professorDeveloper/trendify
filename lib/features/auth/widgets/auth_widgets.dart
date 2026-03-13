@@ -98,31 +98,31 @@ class SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        height: 56,
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppColors.grey300, width: 1),
+    return OutlinedButton(
+      onPressed: onTap,
+      style: OutlinedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(iconPath, width: 24, height: 24),
-            const SizedBox(width: 12),
-            Text(
-              label,
-              style: GoogleFonts.urbanist(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: AppColors.grey900,
-              ),
+        side: const BorderSide(color: AppColors.bgPrimary, width: 1),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
+        minimumSize: const Size(double.infinity, 52),
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Text(
+            label,
+            style: GoogleFonts.urbanist(
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
             ),
-          ],
-        ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Image.asset(iconPath, height: 24, width: 24),
+          ),
+        ],
       ),
     );
   }

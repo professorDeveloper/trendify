@@ -4,7 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trendify/core/constants.dart';
 import 'package:trendify/features/auth/pages/sign_in_page.dart';
 import 'package:trendify/features/auth/pages/sign_up_page.dart';
+
 import '../../../core/theme/app_colors.dart';
+import '../widgets/auth_widgets.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -48,13 +50,29 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                 ),
                 SizedBox(height: 52),
-                _socialButton(Constants.continueWithGoogle, Constants.googleIconPath),
+                SocialButton(
+                  label: Constants.continueWithGoogle,
+                  iconPath: Constants.googleIconPath,
+                  onTap: () {},
+                ),
                 SizedBox(height: 12),
-                _socialButton(Constants.continueWithApple, Constants.appleIconPath),
+                SocialButton(
+                  label: Constants.continueWithApple,
+                  iconPath: Constants.appleIconPath,
+                  onTap: () {},
+                ),
                 SizedBox(height: 12),
-                _socialButton(Constants.continueWithFacebook, Constants.facebookIconPath),
+                SocialButton(
+                  label: Constants.continueWithFacebook,
+                  iconPath: Constants.facebookIconPath,
+                  onTap: () {},
+                ),
                 SizedBox(height: 12),
-                _socialButton(Constants.continueWithTwitter, Constants.twitterIconPath),
+                SocialButton(
+                  label: Constants.continueWithTwitter,
+                  iconPath: Constants.twitterIconPath,
+                  onTap: () {},
+                ),
                 SizedBox(height: 52),
                 ElevatedButton(
                   onPressed: () {
@@ -132,36 +150,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _socialButton(String label, String iconPath) {
-    return OutlinedButton(
-      style: OutlinedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        side: BorderSide(color: AppColors.bgPrimary, width: 1),
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
-        minimumSize: const Size(double.infinity, 52),
-      ),
-      onPressed: () {},
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Text(
-            label,
-            style: GoogleFonts.urbanist(
-              fontWeight: FontWeight.w700,
-              fontSize: 18,
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Image.asset(iconPath, height: 24, width: 24),
           ),
         ],
       ),
