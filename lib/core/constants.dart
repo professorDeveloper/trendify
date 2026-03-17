@@ -1,3 +1,6 @@
+import 'package:trendify/features/home/data/models/category_model.dart';
+import 'package:trendify/features/home/data/models/product_model.dart';
+
 class Constants {
   Constants._();
 
@@ -67,4 +70,65 @@ class Constants {
   static const String mobile1Path = "assets/images/mobile1.png";
   static const String mobile2Path = "assets/images/mobile2.png";
   static const String mobile3Path = "assets/images/mobile3.png";
+
+  static const List<String> categories = [
+    'Discover',
+    'Women',
+    'Men',
+    'Shoe',
+    'Bag',
+  ];
+
+  static const List<ProductModel> products = [
+    ProductModel(
+      name: 'Urban Blend Long...',
+      price: '\$185.00',
+      rating: 4.8,
+      imageUrl: "assets/images/man.png",
+    ),
+    ProductModel(
+      name: 'Luxe Blend Forma...',
+      price: '\$160.00',
+      rating: 4.6,
+      imageUrl: "assets/images/woman.png",
+    ),
+    ProductModel(
+      name: 'Urban Flex C...',
+      price: '\$175.00',
+      rating: 4.7,
+      imageUrl: "assets/images/man.png",
+    ),
+    ProductModel(
+      name: 'Urban Flex C...',
+      price: '\$275.00',
+      rating: 5.7,
+      imageUrl: "assets/images/product5.png",
+    ),ProductModel(
+      name: 'Urban Flex C...',
+      price: '\$175.00',
+      rating: 4.7,
+      imageUrl: "assets/images/product6.png",
+    ),
+    ProductModel(
+      name: 'Urban Flex C...',
+      price: '\$175.00',
+      rating: 4.7,
+      imageUrl: "assets/images/product7.png",
+    ),
+    ProductModel(
+      name: 'Urban Flex C...',
+      price: '\$175.00',
+      rating: 4.7,
+      imageUrl: "assets/images/product8.png",
+    ),
+  ];
+
+  static const List<CategoryModel> categoryCards = [
+    CategoryModel(label: 'Women', imageUrl: 'assets/images/shoes.png'),
+    CategoryModel(label: 'Men', imageUrl: 'assets/images/bag.png'),
+    CategoryModel(label: 'Shoe', imageUrl: 'assets/images/nike_shoes.png'),
+    CategoryModel(label: 'Bag', imageUrl: 'assets/images/headphone.png'),
+    CategoryModel(label: 'Luxury', imageUrl: 'assets/images/ring.png'),
+    CategoryModel(label: 'Kids', imageUrl: 'assets/images/duck.png'),
+  ];
 }

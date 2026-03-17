@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trendify/core/theme/app_colors.dart';
 
+import '../home/presentation/pages/home_page.dart';
+
 class MainBottomNavbar extends StatefulWidget {
   const MainBottomNavbar({super.key});
 
@@ -12,13 +14,39 @@ class MainBottomNavbar extends StatefulWidget {
 class _MainBottomNavbarState extends State<MainBottomNavbar> {
   int _selectedIndex = 0;
 
+  final List<Widget> _pages = const [
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+    // WishlistPage(),
+    // CartPage(),
+    // OrderPage(),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void _onTabTapped(int index) {
+    setState(() => _selectedIndex = index);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: IndexedStack(index: _selectedIndex, children: _pages),
+
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
-        onTap: (index) => setState(() => _selectedIndex = index),
+        onTap: _onTabTapped,
         unselectedItemColor: AppColors.grey500,
         selectedItemColor: AppColors.primary,
         showUnselectedLabels: true,
@@ -46,7 +74,9 @@ class _MainBottomNavbarState extends State<MainBottomNavbar> {
   }
 
   Widget _buildIcon(String assetPath, int index) {
-    final color = _selectedIndex == index ? AppColors.primary : AppColors.grey500;
+    final isActive = _selectedIndex == index;
+    final color = isActive ? AppColors.primary : AppColors.grey500;
+
     return SvgPicture.asset(
       assetPath,
       width: 22,
