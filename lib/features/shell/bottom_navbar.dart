@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trendify/core/theme/app_colors.dart';
+import 'package:trendify/features/cart/pages/cart_page.dart';
 
 import '../home/presentation/pages/home_page.dart';
 
@@ -15,9 +16,9 @@ class _MainBottomNavbarState extends State<MainBottomNavbar> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = const [
+    CartScreen(),
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    CartScreen(),
     HomeScreen(),
     // WishlistPage(),
     // CartPage(),
