@@ -1,6 +1,8 @@
 import 'package:trendify/features/home/data/models/category_model.dart';
 import 'package:trendify/features/home/data/models/product_model.dart';
 
+import '../features/home/data/models/wishlist_product.dart';
+
 class Constants {
   Constants._();
 
@@ -79,47 +81,55 @@ class Constants {
     'Bag',
   ];
 
-  static const List<ProductModel> products = [
+  static List<ProductModel> products = [
     ProductModel(
-      name: 'Urban Blend Long...',
-      price: '\$185.00',
+      name: 'Urban Blend Long Sleeve',
+      price: "185.00",
       rating: 4.8,
-      imageUrl: "assets/images/man.png",
+      imageUrl: 'assets/images/man.png',
+      category: 'Men',
     ),
     ProductModel(
-      name: 'Luxe Blend Forma...',
-      price: '\$160.00',
+      name: 'Luxe Blend Formal Wear',
+      price: "160.00",
       rating: 4.6,
-      imageUrl: "assets/images/woman.png",
+      imageUrl: 'assets/images/woman.png',
+      category: 'Women',
     ),
     ProductModel(
-      name: 'Urban Flex C...',
-      price: '\$175.00',
+      name: 'Urban Flex Casual Tee',
+      price: "175.00",
       rating: 4.7,
-      imageUrl: "assets/images/man.png",
+      imageUrl: 'assets/images/man.png',
+      category: 'Men',
     ),
     ProductModel(
-      name: 'Urban Flex C...',
-      price: '\$275.00',
-      rating: 5.7,
-      imageUrl: "assets/images/product5.png",
-    ),ProductModel(
-      name: 'Urban Flex C...',
-      price: '\$175.00',
-      rating: 4.7,
-      imageUrl: "assets/images/product6.png",
+      name: 'Urban Flex Premium',
+      price: "275.00",
+      rating: 4.9,
+      imageUrl: 'assets/images/product5.png',
+      category: 'Discover',
     ),
     ProductModel(
-      name: 'Urban Flex C...',
-      price: '\$175.00',
+      name: 'Urban Flex Classic',
+      price: "175.00",
       rating: 4.7,
-      imageUrl: "assets/images/product7.png",
+      imageUrl: 'assets/images/product6.png',
+      category: 'Discover',
     ),
     ProductModel(
-      name: 'Urban Flex C...',
-      price: '\$175.00',
-      rating: 4.7,
-      imageUrl: "assets/images/product8.png",
+      name: 'Urban Flex Sport',
+      price: "175.00",
+      rating: 4.5,
+      imageUrl: 'assets/images/product7.png',
+      category: 'Men',
+    ),
+    ProductModel(
+      name: 'Urban Flex Edition',
+      price: "175.00",
+      rating: 4.3,
+      imageUrl: 'assets/images/product8.png',
+      category: 'Women',
     ),
   ];
 

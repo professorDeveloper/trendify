@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trendify/core/theme/app_colors.dart';
 import 'package:trendify/features/cart/pages/cart_page.dart';
+import 'package:trendify/features/favorite/favorite_page.dart';
+import 'package:trendify/features/my_order/pages/my_order_page.dart';
+import 'package:trendify/features/profile/pages/profile_page.dart';
 
 import '../home/presentation/pages/home_page.dart';
 
@@ -16,10 +19,11 @@ class _MainBottomNavbarState extends State<MainBottomNavbar> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = const [
-    CartScreen(),
     HomeScreen(),
+    FavoriteScreen(),
     CartScreen(),
-    HomeScreen(),
+    MyOrderScreen(),
+    ProfileScreen(),
     // WishlistPage(),
     // CartPage(),
     // OrderPage(),
@@ -69,6 +73,11 @@ class _MainBottomNavbarState extends State<MainBottomNavbar> {
             icon: _buildIcon("assets/icons/order.svg", 3),
             label: "My Order",
           ),
+
+          BottomNavigationBarItem(
+            icon: _buildIcon("assets/images/profile.png", 4  ),
+            label: "Profile",
+          ),
         ],
       ),
     );
@@ -78,11 +87,13 @@ class _MainBottomNavbarState extends State<MainBottomNavbar> {
     final isActive = _selectedIndex == index;
     final color = isActive ? AppColors.primary : AppColors.grey500;
 
-    return SvgPicture.asset(
-      assetPath,
-      width: 22,
-      height: 22,
-      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-    );
+    return assetPath.contains(".svg")
+        ? SvgPicture.asset(
+            assetPath,
+            width: 22,
+            height: 22,
+            colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+          )
+        : Image.asset(assetPath, width: 22, height: 22);
   }
 }

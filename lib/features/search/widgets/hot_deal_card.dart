@@ -69,7 +69,7 @@ class _HotDealCardState extends State<HotDealCard> {
             ),
           ),
           Text(
-            widget.product.price,
+            widget.product.price as String,
             style: GoogleFonts.urbanist(
               fontSize: 13,
               fontWeight: FontWeight.w700,

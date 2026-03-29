@@ -78,7 +78,7 @@ class _ProductCardState extends State<ProductCard> {
           ),
           const SizedBox(height: 2),
           Text(
-            widget.product.price,
+            widget.product.price as String,
             style: GoogleFonts.urbanist(
               fontSize: 14,
               fontWeight: FontWeight.w700,

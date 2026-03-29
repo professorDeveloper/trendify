@@ -4,6 +4,7 @@ import 'package:trendify/core/constants.dart';
 import 'package:trendify/core/theme/app_colors.dart';
 import 'package:trendify/features/home/data/models/category_model.dart';
 import 'package:trendify/features/home/presentation/widgets/new_arrial_section.dart';
+import 'package:trendify/features/notification/pages/notification_page.dart';
 import 'package:trendify/features/search/pages/search_page.dart';
 
 import '../widgets/category_tabs.dart';
@@ -45,10 +46,19 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                const Icon(
-                  Icons.notifications_outlined,
-                  color: AppColors.grey900,
-                  size: 24,
+                InkWell(
+                  child: const Icon(
+                    Icons.notifications_outlined,
+                    color: AppColors.grey900,
+                    size: 24,
+                  ),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => NotificationScreen(),
+                      ),
+                    );
+                  },
                 ),
                 Positioned(
                   top: -1,
